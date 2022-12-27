@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ewca" />
+    <title>@ViewData["Title"] - ASPEvidence</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/lightbox2/css/lightbox.min.css" asp-append-version="true" />
+    
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <h1>Evidence pojištění</h1>
+            <small>záverečný projekt</small>
+        </div>
+        <nav>
+            <ul>
+                <listyle ="--clr: #EF6534"><a asp-controller="Home" asp-action="Index">O aplikaci</a></listyle>
+                <listyle ="--clr: #EF6534"><a asp-controller="Users" asp-action="Index">Pojištěnci</a></listyle>
+                <listyle ="--clr: #EF6534"><a asp-controller="Insurances" asp-action="Index">Pojištění</a></listyle>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div id="centrovac"
+            @if (Context.Request.RouteValues.Values.Any(p => p is "Home") && Context.Request.RouteValues.Values.Any(p => p is "Index"))
+            {
+                <text>class="domu-article"</text>
+            }>
+            
+
+            @RenderBody()
+
+            <div class="cistic"></div>
+        </div>
+    </article>
+        
+    <footer>
+        Vytvořila Evča Wolná 2022.
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
